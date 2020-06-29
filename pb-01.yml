@@ -54,8 +54,8 @@
   handlers:
     - name: frr_reload
       service:
-        name = frr
-        state = reloaded
+        name=frr
+        state=reloaded
       listen: "frr_reload"
       
 # Leaf02 IF Datei      
