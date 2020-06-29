@@ -4,18 +4,5 @@ hostname leaf01
 log syslog informational
 service integrated-vtysh-config
 !
-router bgp 42000011
- bgp router-id 10.0.0.11
- neighbor swp11 interface remote-as external
- !
- address-family ipv4 unicast
-  redistribute connected
- exit-address-family
- !
- address-family l2vpn evpn
-  neighbor swp11 activate
-  advertise-all-vni
- exit-address-family
-!
 line vty
 !
