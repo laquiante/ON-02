@@ -40,6 +40,8 @@
     - name: Durchstarten der Schnittstelle
       shell: /sbin/ifreload -a
       
+# Leaf01 routing      
+      
 - hosts: leaf01
   name: Routing
   become: yes
@@ -58,15 +60,15 @@
         state=reloaded
       listen: "frr_reload"
       
-# Leaf02 IF Datei      
+# Leaf02 routing   
       
 - hosts: leaf02
-  name: Schnittstellen
+  name: Routing
   become: yes
   tasks:
     - name: IPv4 und BGP
       copy: 
-        src: /home/cumulus/ON-02/leaf02-if
+        src: /home/cumulus/ON-02/leaf02-frr
         dest: /etc/network/interfaces
       notify:
         - frr_reload
@@ -78,15 +80,15 @@
         state=reloaded
       listen: "frr_reload" 
  
-# Spine01
+# Spine01 routing
       
 - hosts: spine01
-  name: Schnittstellen
+  name: Routing
   become: yes
   tasks:
     - name: IPv3 und BGP
       copy: 
-        src: /home/cumulus/ON-02/spine01-if
+        src: /home/cumulus/ON-02/spine01-frr
         dest: /etc/network/interfaces
       notify:
         - frr_reload
