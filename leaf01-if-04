@@ -54,7 +54,7 @@ iface L3VNI_Linux
     bridge-learning off
     mstpctl-bpduguard yes
     mstpctl-portbpdufilter yes
-    vxlan-id 1001
+    vxlan-id 10010
 
 auto vlan1001
 iface vlan1001
