@@ -11,8 +11,8 @@ iface swp11
 
 auto bridge
 iface bridge
-    bridge-ports swp1 vxlan10
-    bridge-vids 10
+    bridge-ports swp1 vxlan10 L3VNI_Linux
+    bridge-vids 10 1001
     bridge-vlan-aware yes
 
 auto mgmt
@@ -31,6 +31,7 @@ iface vlan10
     address-virtual 00:00:00:00:00:01 172.31.10.110/24
     vlan-id 10
     vlan-raw-device bridge
+    vrf LinuxAdmin
 
 auto vxlan10
 iface vxlan10
@@ -41,7 +42,6 @@ iface vxlan10
     mstpctl-portbpdufilter yes
     vxlan-id 10
     vxlan-local-tunnelip 10.0.0.11
-    vrf LinuxAdmin
     
 auto LinuxAdmin
 iface LinuxAdmin
@@ -57,7 +57,7 @@ iface L3VNI_Linux
     vxlan-id 1001
 
 auto vlan1001
-iface vla1001
+iface vlan1001
     hwaddress 44:38:39:00:00:01
     vlan-id 1001
     vlan-raw-device bridge
