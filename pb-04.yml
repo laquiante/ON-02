@@ -1,3 +1,17 @@
+# Server02 IF Datei
+
+- hosts: server02
+  name: Schnittstellen
+  become: yes
+  tasks:
+    - name: IPv4
+      copy: 
+        src: /home/cumulus/ON-02/server02-04
+        dest: /etc/network/interfaces
+    # aktivieren
+    - name: Durchstarten der Schnittstelle
+      shell: /sbin/ifreload -a
+
 # #################################################################
 # #################################################################
 # #################################################################
@@ -10,7 +24,7 @@
   tasks:
     - name: IPv4 und BGP 
       copy: 
-        src: /home/cumulus/ON-02/leaf01-if-03 
+        src: /home/cumulus/ON-02/leaf01-if-04 
         dest: /etc/network/interfaces
     # aktivieren
     - name: Durchstarten der Schnittstelle
@@ -46,7 +60,7 @@
   tasks:
     - name: IPv4 und BGP 
       copy: 
-        src: /home/cumulus/ON-02/leaf02-if-03 
+        src: /home/cumulus/ON-02/leaf02-if-04 
         dest: /etc/network/interfaces
     # aktivieren
     - name: Durchstarten der Schnittstelle
