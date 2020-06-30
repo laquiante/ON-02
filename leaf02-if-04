@@ -29,7 +29,7 @@ auto vlan20
 iface vlan20
     address 172.31.20.112/24
 #    address-virtual 00:00:00:00:01:01 172.31.20.110/24
-    vlan-id 10
+    vlan-id 20
     vlan-raw-device bridge
     vrf LinuxAdmin
     
