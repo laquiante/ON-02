@@ -47,7 +47,7 @@
   tasks:
     - name: IPv4 und BGP 
       copy: 
-        src: /home/cumulus/ON-02/leaf02-if-2 
+        src: /home/cumulus/ON-02/leaf02-if-02 
         dest: /etc/network/interfaces
     # aktivieren
     - name: Durchstarten der Schnittstelle
