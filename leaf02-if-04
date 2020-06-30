@@ -41,3 +41,25 @@ iface vxlan20
     mstpctl-portbpdufilter yes
     vxlan-id 20
     vxlan-local-tunnelip 10.0.0.12
+    vrf LinuxAdmin
+    
+auto LinuxAdmin
+iface LinuxAdmin
+  vrf-table auto
+  
+auto L3VNI_LinuxAdmin
+iface L3VNI_LinuxAdmin
+    bridge-access 1001
+    bridge-arp-nd-suppress on
+    bridge-learning off
+    mstpctl-bpduguard yes
+    mstpctl-portbpdufilter yes
+    vxlan-id 1001
+
+auto vlan1001
+iface vla1001
+    hwaddress 44:38:39:00:00:02
+    vlan-id 1001
+    vlan-raw-device bridge
+    vrf LinuxAdmin
+
