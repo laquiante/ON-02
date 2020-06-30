@@ -47,8 +47,8 @@ auto LinuxAdmin
 iface LinuxAdmin
   vrf-table auto
   
-auto L3VNI_LinuxAdmin
-iface L3VNI_LinuxAdmin
+auto L3VNI_Linux
+iface L3VNI_Linux
     bridge-access 1001
     bridge-arp-nd-suppress on
     bridge-learning off
