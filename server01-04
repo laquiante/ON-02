@@ -8,4 +8,4 @@ iface eth0 inet dhcp
 auto eth1
 iface eth1 inet static
     address 172.31.10.1/24
-    gateway 172.31.10.111
+    post-up /sbin/route add -net 172.0.0.0 netmask 255.0.0.0 gw 172.31.111
