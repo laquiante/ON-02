@@ -1,3 +1,18 @@
+# Server01 IF Datei
+
+- hosts: server01
+  name: Schnittstellen
+  become: yes
+  tasks:
+    - name: IPv4
+      copy: 
+        src: /home/cumulus/ON-02/server01-04
+        dest: /etc/network/interfaces
+    # aktivieren
+    - name: Durchstarten der Schnittstelle
+      shell: /sbin/ifreload -a
+
+
 # Server02 IF Datei
 
 - hosts: server02
