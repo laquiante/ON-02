@@ -5,7 +5,7 @@ log syslog informational
 service integrated-vtysh-config
 !
 vrf LinuxAdmin
-  vni 1001
+  vni 10010
 !
 router bgp 42000011
  bgp router-id 10.0.0.11
