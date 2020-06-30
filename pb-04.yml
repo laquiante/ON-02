@@ -53,7 +53,7 @@
   tasks:
     - name: EVPN VxLAN
       copy:
-        src: /home/cumulus/ON-02/leaf01-frr
+        src: /home/cumulus/ON-02/leaf01-frr-04
         dest: /etc/frr/frr.conf
       notify:
         - frr_reload
@@ -89,7 +89,7 @@
   tasks:
     - name: IPv4 und BGP
       copy: 
-        src: /home/cumulus/ON-02/leaf02-frr
+        src: /home/cumulus/ON-02/leaf02-frr-04
         dest: /etc/frr/frr.conf
       notify:
         - frr_reload
