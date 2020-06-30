@@ -41,7 +41,7 @@ iface vxlan10
     mstpctl-portbpdufilter yes
     vxlan-id 10
     vxlan-local-tunnelip 10.0.0.11
-    
+    vrf LinuxAdmin
     
 auto LinuxAdmin
 iface LinuxAdmin
