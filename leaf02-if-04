@@ -41,7 +41,7 @@ iface vxlan20
     mstpctl-bpduguard yes
     mstpctl-portbpdufilter yes
     vxlan-id 20
-    vxlan-local-tunnelip 10.0.0.12
+#    vxlan-local-tunnelip 10.0.0.12
 
 auto LinuxAdmin
 iface LinuxAdmin
