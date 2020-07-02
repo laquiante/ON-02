@@ -18,6 +18,7 @@ router bgp 42000011
  address-family l2vpn evpn
   neighbor swp11 activate
   advertise-all-vni
+  advertise-svi-ip
  exit-address-family
 !
 line vty
