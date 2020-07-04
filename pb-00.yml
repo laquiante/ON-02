@@ -122,7 +122,7 @@
   name: Routing
   become: yes
   tasks:
-    - name: IPv3 und BGP
+    - name: IPv4 und BGP
       copy: 
         src: /home/cumulus/ON-02/spine01-frr-00
         dest: /etc/frr/frr.conf
