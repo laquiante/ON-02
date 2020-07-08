@@ -5,7 +5,7 @@ graph "Linux01" {
 
 "leaf01" [function="leaf" os="CumulusCommunity/cumulus-vx" version="4.1.1" ]
 "leaf02" [function="leaf" os="CumulusCommunity/cumulus-vx" version="4.1.1" ]
-"spine01" [function="leaf" os="CumulusCommunity/cumulus-vx" version="4.1.1" ]
+"spine01" [function="spine" os="CumulusCommunity/cumulus-vx" version="4.1.1" ]
 
 "server01":"eth1" -- "leaf01":"swp1"
 "server02":"eth1" -- "leaf02":"swp1"
