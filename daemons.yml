@@ -16,7 +16,7 @@
         name=frr
         state=restarted
         enabled=yes
-      listen: "frr_restart"
+  
 
 - hosts: spine
   name: Configure /etc/frr/daemon
@@ -33,4 +33,4 @@
         name=frr
         state=restarted
         enabled=yes
-      listen: "frr_restart"
+
