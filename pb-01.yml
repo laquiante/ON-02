@@ -56,13 +56,7 @@
         dest: /etc/frr/frr.conf
       notify:
         - frr_reload
-        
-  handlers:
-    - name: frr_reload
-      service:
-        name=frr
-        state=reloaded
-      listen: "frr_reload"
+       
     
 # #################################################################    
     
@@ -92,13 +86,7 @@
         dest: /etc/frr/frr.conf
       notify:
         - frr_reload
- 
-  handlers:
-    - name: frr_reload
-      service:
-        name=frr
-        state=reloaded
-      listen: "frr_reload" 
+
  
 # #################################################################  
  
@@ -129,9 +117,4 @@
       notify:
         - frr_reload
       
-  handlers:
-    - name: frr_reload
-      service:
-        name=frr
-        state=reloaded
-      listen: "frr_reload"
+
