@@ -1,15 +1,15 @@
 ---
-- name: restart frr
+- name: frr_restart
   service:
     name: frr
     state: restarted
 
-- name: reload frr
+- name: frr_reload
   service:
     name: frr
     state: reloaded
 
-- name: enable frr
+- name: frr_enable
   service:
     name: frr
     state: started
