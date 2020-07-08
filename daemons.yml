@@ -1,7 +1,24 @@
 # Einspielen der Routing Daemon
 # und "restart" von FRR
 
-- hosts: switches
+- hosts: leaf
+  name: Configure /etc/frr/daemon
+  become: yes
+  tasks:
+    - copy:
+        src: /home/cumulus/ON-02/daemons
+        dest: /etc/frr/daemons
+      notify:
+        - frr_restart
+
+    - name: frr_restart
+      service:
+        name=frr
+        state=restarted
+        enabled=yes
+      listen: "frr_restart"
+
+- hosts: spine
   name: Configure /etc/frr/daemon
   become: yes
   tasks:
