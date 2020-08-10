@@ -3,6 +3,7 @@
 - hosts: server01
   name: Schnittstellen
   become: yes
+  gather_facts: no
   tasks:
     - name: IPv4
       copy: 
@@ -18,6 +19,7 @@
 - hosts: server02
   name: Schnittstellen
   become: yes
+  gather_facts: no
   tasks:
     - name: IPv4
       copy: 
@@ -36,6 +38,7 @@
 - hosts: leaf01
   name: Schnittstellen
   become: yes
+  gather_facts: no
   tasks:
     - name: IPv4 und BGP 
       copy: 
@@ -50,6 +53,7 @@
 - hosts: leaf01
   name: Routing
   become: yes
+  gather_facts: no
   tasks:
     - name: EVPN VxLAN
       copy:
@@ -72,6 +76,7 @@
 - hosts: leaf02
   name: Schnittstellen
   become: yes
+  gather_facts: no
   tasks:
     - name: IPv4 und BGP 
       copy: 
@@ -86,6 +91,7 @@
 - hosts: leaf02
   name: Routing
   become: yes
+  gather_facts: no
   tasks:
     - name: IPv4 und BGP
       copy: 
@@ -108,6 +114,7 @@
 - hosts: spine01
   name: Schnittstellen
   become: yes
+  gather_facts: no
   tasks:
     - name: IPv4 und BGP 
       copy: 
@@ -122,6 +129,7 @@
 - hosts: spine01
   name: Routing
   become: yes
+  gather_facts: no
   tasks:
     - name: IPv4 und BGP
       copy: 
