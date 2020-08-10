@@ -82,7 +82,7 @@
   tasks:
     - name: IPv4 und BGP 
       copy: 
-        src: /home/cumulus/ON-02/spine01-if 
+        src: /home/cumulus/ON-02/spine01-if-01 
         dest: /etc/network/interfaces
     # aktivieren
     - name: Durchstarten der Schnittstelle
