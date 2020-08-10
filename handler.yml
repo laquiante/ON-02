@@ -3,14 +3,20 @@
   service:
     name: frr
     state: restarted
+    
+  listening: frr_restart
 
 - name: frr_reload
   service:
     name: frr
     state: reloaded
+    
+  listening: frr_reload
 
 - name: frr_enable
   service:
     name: frr
     state: started
     enabled: yes
+    
+  listening: frr_enable
