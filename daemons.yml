@@ -11,6 +11,13 @@
       notify:
         - frr_restart
         
+  handlers:
+    - name: frr_restart
+      service:
+        name=frr
+        state=restarted
+      listen: "frr_restart"
+        
 - hosts: spine
   name: Configure /etc/frr/daemon
   become: yes
@@ -21,4 +28,9 @@
       notify:
         - frr_restart
 
-
+  handlers:
+    - name: frr_restart
+      service:
+        name=frr
+        state=restarted
+      listen: "frr_restart"
