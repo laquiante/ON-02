@@ -3,6 +3,7 @@
 - hosts: server01
   name: Server01 Interfaces
   become: yes
+  gather_facts: no
   tasks:
     - name: IPv4
       copy: 
@@ -17,6 +18,7 @@
 - hosts: server02
   name: Server02 Interfaces
   become: yes
+  gather_facts: no
   tasks:
     - name: IPv4
       copy: 
@@ -35,6 +37,7 @@
 - hosts: leaf01
   name: Leaf01 Interfaces
   become: yes
+  gather_facts: no
   tasks:
     - name: IPv4 and BGP 
       copy: 
@@ -49,6 +52,7 @@
 - hosts: leaf01
   name: Routing
   become: yes
+  gather_facts: no
   tasks:
     - name: prepare for EVPN VxLAN
       copy:
@@ -71,6 +75,7 @@
 - hosts: leaf02
   name: Leaf02 Interfaces
   become: yes
+  gather_facts: no
   tasks:
     - name: IPv4 and BGP 
       copy: 
@@ -85,6 +90,7 @@
 - hosts: leaf02
   name: Routing
   become: yes
+  gather_facts: no
   tasks:
     - name: IPv4 and BGP
       copy: 
@@ -107,6 +113,7 @@
 - hosts: spine01
   name: Spine01 Interfaces
   become: yes
+  gather_facts: no
   tasks:
     - name: IPv4 and BGP 
       copy: 
@@ -121,6 +128,7 @@
 - hosts: spine01
   name: Routing
   become: yes
+  gather_facts: no
   tasks:
     - name: IPv4 and BGP
       copy: 
