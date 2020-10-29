@@ -1,7 +1,7 @@
-# Server01  IF Datei
+# Server01  Schnittstellen Datei
 
 - hosts: server01
-  name: Schnittstellen
+  name: Server01 Interfaces
   become: yes
   tasks:
     - name: IPv4
@@ -9,13 +9,13 @@
         src: /home/cumulus/ON-02/server01-00
         dest: /etc/network/interfaces
     # aktivieren
-    - name: Durchstarten der Schnittstelle
+    - name: activate changes on Server01
       shell: /sbin/ifreload -a
 
-# Server02 IF Datei
+# Server02 Schnittstellen Datei
 
 - hosts: server02
-  name: Schnittstellen
+  name: Server02 Interfaces
   become: yes
   tasks:
     - name: IPv4
@@ -23,7 +23,7 @@
         src: /home/cumulus/ON-02/server02-00
         dest: /etc/network/interfaces
     # aktivieren
-    - name: Durchstarten der Schnittstelle
+    - name: activate changes on Server02
       shell: /sbin/ifreload -a
 
 # #################################################################
@@ -33,15 +33,15 @@
 # Leaf01 IF Datei
 
 - hosts: leaf01
-  name: Schnittstellen
+  name: Leaf01 Interfaces
   become: yes
   tasks:
-    - name: IPv4 und BGP 
+    - name: IPv4 and BGP 
       copy: 
         src: /home/cumulus/ON-02/leaf01-if-00
         dest: /etc/network/interfaces
     # aktivieren
-    - name: Durchstarten der Schnittstelle
+    - name: activate changes on Leaf01
       shell: /sbin/ifreload -a
       
 # Leaf01 routing      
@@ -50,7 +50,7 @@
   name: Routing
   become: yes
   tasks:
-    - name: EVPN VxLAN
+    - name: prepare for EVPN VxLAN
       copy:
         src: /home/cumulus/ON-02/leaf01-frr-00
         dest: /etc/frr/frr.conf
@@ -69,15 +69,15 @@
 # Leaf02 IF Datei
 
 - hosts: leaf02
-  name: Schnittstellen
+  name: Leaf02 Interfaces
   become: yes
   tasks:
-    - name: IPv4 und BGP 
+    - name: IPv4 and BGP 
       copy: 
         src: /home/cumulus/ON-02/leaf02-if-00 
         dest: /etc/network/interfaces
     # aktivieren
-    - name: Durchstarten der Schnittstelle
+    - name: activate changes for Leaf02
       shell: /sbin/ifreload -a    
     
 # Leaf02 routing   
@@ -86,7 +86,7 @@
   name: Routing
   become: yes
   tasks:
-    - name: IPv4 und BGP
+    - name: IPv4 and BGP
       copy: 
         src: /home/cumulus/ON-02/leaf02-frr-00
         dest: /etc/frr/frr.conf
@@ -105,15 +105,15 @@
 # Spine01 IF Datei
 
 - hosts: spine01
-  name: Schnittstellen
+  name: Spine01 Interfaces
   become: yes
   tasks:
-    - name: IPv4 und BGP 
+    - name: IPv4 and BGP 
       copy: 
         src: /home/cumulus/ON-02/spine01-if-00 
         dest: /etc/network/interfaces
     # aktivieren
-    - name: Durchstarten der Schnittstelle
+    - name: activate changes for Spine01
       shell: /sbin/ifreload -a   
  
 # Spine01 routing
@@ -122,7 +122,7 @@
   name: Routing
   become: yes
   tasks:
-    - name: IPv4 und BGP
+    - name: IPv4 and BGP
       copy: 
         src: /home/cumulus/ON-02/spine01-frr-00
         dest: /etc/frr/frr.conf
