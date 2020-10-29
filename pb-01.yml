@@ -1,29 +1,31 @@
 # Server01  IF Datei
 
 - hosts: server01
-  name: Schnittstellen
+  name: Interfaces
   become: yes
+  gather_facts: no
   tasks:
     - name: IPv4
       copy: 
         src: /home/cumulus/ON-02/server01-01 
         dest: /etc/network/interfaces
     # aktivieren
-    - name: Durchstarten der Schnittstelle
+    - name: activate changes for Server01
       shell: /sbin/ifreload -a
 
 # Server02 IF Datei
 
 - hosts: server02
-  name: Schnittstellen
+  name: Interfaces
   become: yes
+  gather_facts: no
   tasks:
     - name: IPv4
       copy: 
         src: /home/cumulus/ON-02/server02-01
         dest: /etc/network/interfaces
     # aktivieren
-    - name: Durchstarten der Schnittstelle
+    - name: activate changes for Server02
       shell: /sbin/ifreload -a
 
 # #################################################################
@@ -33,10 +35,11 @@
 # Leaf01 IF Datei
 
 - hosts: leaf01
-  name: Schnittstellen
+  name: Interfaces for Leaf01
   become: yes
+  gather_facts: no
   tasks:
-    - name: IPv4 und BGP 
+    - name: bridge access-port and l3-uplink
       copy: 
         src: /home/cumulus/ON-02/leaf01-if-01 
         dest: /etc/network/interfaces
@@ -49,8 +52,9 @@
 - hosts: leaf01
   name: Routing
   become: yes
+  gather_facts: no
   tasks:
-    - name: EVPN VxLAN
+    - name: simple MP-BGP
       copy:
         src: /home/cumulus/ON-02/leaf01-frr-01
         dest: /etc/frr/frr.conf
@@ -69,10 +73,11 @@
 # Leaf02 IF Datei
 
 - hosts: leaf02
-  name: Schnittstellen
+  name: Interfaces for Leaf02
   become: yes
+  gather_facts: no
   tasks:
-    - name: IPv4 und BGP 
+    - name: bridge access-port and l3-uplink 
       copy: 
         src: /home/cumulus/ON-02/leaf02-if-01 
         dest: /etc/network/interfaces
@@ -85,8 +90,9 @@
 - hosts: leaf02
   name: Routing
   become: yes
+  gather_facts: no
   tasks:
-    - name: IPv4 und BGP
+    - name: simple MP-BGP
       copy: 
         src: /home/cumulus/ON-02/leaf02-frr-01
         dest: /etc/frr/frr.conf
@@ -105,10 +111,11 @@
 # Spine01 IF Datei
 
 - hosts: spine01
-  name: Schnittstellen
+  name: Interfaces for Spine01
   become: yes
+  gather_facts: no
   tasks:
-    - name: IPv4 und BGP 
+    - name: l3-fabric 
       copy: 
         src: /home/cumulus/ON-02/spine01-if-01 
         dest: /etc/network/interfaces
@@ -121,8 +128,9 @@
 - hosts: spine01
   name: Routing
   become: yes
+  gather_facts: no
   tasks:
-    - name: IPv4 und BGP
+    - name: simple MP-BGP
       copy: 
         src: /home/cumulus/ON-02/spine01-frr-01
         dest: /etc/frr/frr.conf
