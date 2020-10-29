@@ -1,3 +1,43 @@
+# Einspielen der Routing Daemon
+# und "restart" von FRR
+
+- hosts: leaf
+  name: Configure /etc/frr/daemon
+  become: yes
+  gather_facts: no
+  tasks:
+    - copy:
+        src: /home/cumulus/ON-02/daemons
+        dest: /etc/frr/daemons
+      notify:
+        - frr_restart
+        
+  handlers:
+    - name: frr_restart
+      service:
+        name=frr
+        state=restarted
+      listen: "frr_restart"
+        
+- hosts: spine
+  name: Configure /etc/frr/daemon
+  become: yes
+  gather_facts: no
+  tasks:
+    - copy:
+        src: /home/cumulus/ON-02/daemons
+        dest: /etc/frr/daemons
+      notify:
+        - frr_restart
+
+  handlers:
+    - name: frr_restart
+      service:
+        name=frr
+        state=restarted
+      listen: "frr_restart"
+
+# Clean start
 # Server01  Schnittstellen Datei
 
 - hosts: server01
@@ -54,7 +94,7 @@
   become: yes
   gather_facts: no
   tasks:
-    - name: prepare for EVPN VxLAN
+    - name: clean up
       copy:
         src: /home/cumulus/ON-02/leaf01-frr-00
         dest: /etc/frr/frr.conf
