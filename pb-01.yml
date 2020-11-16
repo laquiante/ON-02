@@ -44,7 +44,7 @@
         src: /home/cumulus/ON-02/leaf01-if-01 
         dest: /etc/network/interfaces
     # aktivieren
-    - name: Durchstarten der Schnittstelle
+    - name: Activate changes
       shell: /sbin/ifreload -a
       
 # Leaf01 routing      
@@ -82,7 +82,7 @@
         src: /home/cumulus/ON-02/leaf02-if-01 
         dest: /etc/network/interfaces
     # aktivieren
-    - name: Durchstarten der Schnittstelle
+    - name: activate changes
       shell: /sbin/ifreload -a    
     
 # Leaf02 routing   
@@ -120,7 +120,7 @@
         src: /home/cumulus/ON-02/spine01-if-01 
         dest: /etc/network/interfaces
     # aktivieren
-    - name: Durchstarten der Schnittstelle
+    - name: activate changes
       shell: /sbin/ifreload -a   
  
 # Spine01 routing
