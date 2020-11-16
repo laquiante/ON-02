@@ -24,3 +24,20 @@ auto eth0
 iface eth0 inet dhcp
     vrf mgmt
     post-up sysctl -w net.ipv6.conf.eth0.accept_ra=2
+
+auto vlan10
+iface vlan10
+    address 172.31.10.112/24
+    address-virtual 00:00:00:00:00:01 172.31.10.110/24
+    vlan-id 10
+    vlan-raw-device bridge
+
+auto vxlan10
+iface vxlan10
+    bridge-access 10
+    bridge-arp-nd-suppress on
+    bridge-learning off
+    mstpctl-bpduguard yes
+    mstpctl-portbpdufilter yes
+    vxlan-id 10
+    vxlan-local-tunnelip 10.0.0.12
