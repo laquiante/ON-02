@@ -89,7 +89,7 @@
   tasks:
     - name: IPv4 und BGP 
       copy: 
-        src: /home/cumulus/ON-02/spine01-if-01-B 
+        src: /home/cumulus/ON-02/spine01-if-02-B 
         dest: /etc/network/interfaces
     # aktivieren
     - name: activate changes
