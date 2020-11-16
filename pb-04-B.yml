@@ -7,7 +7,7 @@
   tasks:
     - name: IPv4
       copy: 
-        src: /home/cumulus/ON-02/server01-04
+        src: /home/cumulus/ON-02/server01-04-B
         dest: /etc/network/interfaces
     # aktivieren
     - name: activate changes
@@ -42,7 +42,7 @@
   tasks:
     - name: Interfaces for Leaf01
       copy: 
-        src: /home/cumulus/ON-02/leaf01-if-04 
+        src: /home/cumulus/ON-02/leaf01-if-04-B 
         dest: /etc/network/interfaces
     # aktivieren
     - name: activating changes
@@ -80,7 +80,7 @@
   tasks:
     - name: Interfaces for Leaf02
       copy: 
-        src: /home/cumulus/ON-02/leaf02-if-04 
+        src: /home/cumulus/ON-02/leaf02-if-04-B 
         dest: /etc/network/interfaces
     # aktivieren
     - name: activate changes
