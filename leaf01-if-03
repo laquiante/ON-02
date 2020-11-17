@@ -40,4 +40,4 @@ iface vxlan10
     mstpctl-bpduguard yes
     mstpctl-portbpdufilter yes
     vxlan-id 10
-    vxlan-local-tunnelip 10.0.0.11
+
