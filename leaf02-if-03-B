@@ -27,8 +27,8 @@ iface eth0 inet dhcp
 
 auto vlan10
 iface vlan10
-    address 172.31.10.112/24
-    address-virtual 00:00:00:00:00:01 172.31.10.110/24
+    ip address 172.31.10.112/24
+    ip address-virtual 00:00:00:00:00:01 172.31.10.110/24
     vlan-id 10
     vlan-raw-device bridge
 
