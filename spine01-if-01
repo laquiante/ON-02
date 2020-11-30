@@ -8,6 +8,9 @@ iface swp11
 auto swp12
 iface swp12
 
+auto swp13
+iface swp13
+
 auto mgmt
 iface mgmt
     vrf-table auto
