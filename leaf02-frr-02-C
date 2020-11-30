@@ -8,7 +8,6 @@ router bgp 42000012
  bgp router-id 10.0.0.12
  neighbor swp12 interface remote-as external
  neighbor peerlink.4094 interface remote-as external
- neighbor 
  !
  address-family ipv4 unicast
   redistribute connected
