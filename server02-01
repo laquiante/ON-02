@@ -7,7 +7,7 @@ iface eth0 inet dhcp
     
     # The data plane network interfaces
 auto eth1
-iface eth1 inet manual
+iface eth1 inet static
   address 172.31.10.2/24
 
 
