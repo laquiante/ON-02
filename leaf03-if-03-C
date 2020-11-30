@@ -14,8 +14,8 @@ iface hpcbond
     clag-id 1
     bond-lacp-bypass-allow yes
 
-auto swp12
-iface swp12
+auto swp13
+iface swp13
 
 auto swp49
 iface swp49
