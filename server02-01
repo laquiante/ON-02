@@ -8,8 +8,8 @@ iface eth0 inet dhcp
     # The data plane network interfaces
 auto eth1
 iface eth1 inet manual
-  address 172.31.10.2
-  netmask 255.255.255.0
+  address 172.31.10.2/24
+
 
 
 
