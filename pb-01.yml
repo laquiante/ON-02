@@ -105,6 +105,44 @@
         name=frr
         state=reloaded
       listen: "frr_reload"
+      
+# #################################################################    
+    
+# Leaf03 IF Datei
+
+- hosts: leaf03
+  name: Interfaces for Leaf03
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: bridge access-port and l3-uplink 
+      copy: 
+        src: /home/cumulus/ON-02/leaf03-if-01 
+        dest: /etc/network/interfaces
+    # aktivieren
+    - name: activate changes
+      shell: /sbin/ifreload -a    
+    
+# Leaf03 routing   
+      
+- hosts: leaf03
+  name: Routing
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: simple MP-BGP
+      copy: 
+        src: /home/cumulus/ON-02/leaf03-frr-01
+        dest: /etc/frr/frr.conf
+      notify:
+        - frr_reload
+        
+  handlers:
+    - name: frr_reload
+      service:
+        name=frr
+        state=reloaded
+      listen: "frr_reload"
  
 # #################################################################  
  
