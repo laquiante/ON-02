@@ -1,0 +1,153 @@
+# #################################################################
+# #################################################################
+# #################################################################
+
+# Leaf01 IF Datei
+
+- hosts: leaf01
+  name: Interfaces
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: VXLAN Interface 
+      copy: 
+        src: /home/cumulus/ON-02/leaf01-if-03-C 
+        dest: /etc/network/interfaces
+    # aktivieren
+    - name: Durchstarten der Schnittstelle
+      shell: /sbin/ifreload -a
+      
+# Leaf01 routing      
+      
+- hosts: leaf01
+  name: Routing
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: simple MP-BGP
+      copy:
+        src: /home/cumulus/ON-02/leaf01-frr-02-C
+        dest: /etc/frr/frr.conf
+      notify:
+        - frr_reload
+        
+  handlers:
+    - name: frr_reload
+      service:
+        name=frr
+        state=reloaded
+      listen: "frr_reload"
+    
+# #################################################################    
+    
+# Leaf02 IF Datei
+
+- hosts: leaf02
+  name: Schnittstellen
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: VXLAN Interface 
+      copy: 
+        src: /home/cumulus/ON-02/leaf02-if-03-C 
+        dest: /etc/network/interfaces
+    # aktivieren
+    - name: activate changes
+      shell: /sbin/ifreload -a    
+    
+# Leaf02 routing   
+      
+- hosts: leaf02
+  name: Routing
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: simple MP-BGP
+      copy: 
+        src: /home/cumulus/ON-02/leaf02-frr-02-C
+        dest: /etc/frr/frr.conf
+      notify:
+        - frr_reload
+ 
+  handlers:
+    - name: frr_reload
+      service:
+        name=frr
+        state=reloaded
+      listen: "frr_reload" 
+ 
+# #################################################################    
+    
+# Leaf03 IF Datei
+
+- hosts: leaf03
+  name: Schnittstellen
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: VXLAN Interface 
+      copy: 
+        src: /home/cumulus/ON-02/leaf03-if-03-C 
+        dest: /etc/network/interfaces
+    # aktivieren
+    - name: activate changes
+      shell: /sbin/ifreload -a    
+    
+# Leaf03 routing   
+      
+- hosts: leaf03
+  name: Routing
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: simple MP-BGP
+      copy: 
+        src: /home/cumulus/ON-02/leaf03-frr-02-C
+        dest: /etc/frr/frr.conf
+      notify:
+        - frr_reload
+ 
+  handlers:
+    - name: frr_reload
+      service:
+        name=frr
+        state=reloaded
+      listen: "frr_reload"  
+ 
+# #################################################################  
+ 
+# Spine01 IF Datei
+
+- hosts: spine01
+  name: Interfaces for Spine01
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: Interfaces 
+      copy: 
+        src: /home/cumulus/ON-02/spine01-if-02-C 
+        dest: /etc/network/interfaces
+    # aktivieren
+    - name: activating changes
+      shell: /sbin/ifreload -a   
+ 
+# Spine01 routing
+      
+- hosts: spine01
+  name: Routing
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: simple MP-BGP
+      copy: 
+        src: /home/cumulus/ON-02/spine01-frr-02-C
+        dest: /etc/frr/frr.conf
+      notify:
+        - frr_reload
+      
+  handlers:
+    - name: frr_reload
+      service:
+        name=frr
+        state=reloaded
+      listen: "frr_reload"
