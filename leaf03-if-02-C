@@ -7,8 +7,8 @@ iface lo inet loopback
 auto swp1
 iface swp1
     
-auto bond1
-iface bond1
+auto hpcbond
+iface hpcbond
     bridge-access 10
     bond-slaves swp1
     clag-id 1
@@ -25,7 +25,7 @@ iface swp50
 
 auto bridge
 iface bridge
-    bridge-ports peerlink bondhpc
+    bridge-ports peerlink hpcbond
     bridge-vids 10
     bridge-vlan-aware yes
 
