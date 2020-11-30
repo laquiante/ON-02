@@ -6,7 +6,7 @@ service integrated-vtysh-config
 !
 router bgp 42000013
  bgp router-id 10.0.0.13
- neighbor swp12 interface remote-as external
+ neighbor swp13 interface remote-as external
  !
  address-family ipv4 unicast
   redistribute connected
