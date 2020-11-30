@@ -21,11 +21,13 @@
   tasks:
     - name: IPv4
       copy: 
-        src: /home/cumulus/ON-02/server02-00
+#        src: /home/cumulus/ON-02/server02-00
+        src: /home/cumulus/ON-02/server02-00-C
         dest: /etc/network/interfaces
     # aktivieren
     - name: activate changes on Server02
       shell: /sbin/ifreload -a
+      
 
 # #################################################################
 # #################################################################
@@ -104,6 +106,42 @@
         name=frr
         state=reloaded
       listen: "frr_reload" 
+      
+# Leaf03 IF Datei
+
+- hosts: leaf03
+  name: Leaf03 Interfaces
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: IF clean up
+      copy: 
+        src: /home/cumulus/ON-02/leaf03-if-00
+        dest: /etc/network/interfaces
+    # aktivieren
+    - name: activate changes for Leaf03
+      shell: /sbin/ifreload -a    
+    
+# Leaf03 routing   
+      
+- hosts: leaf03
+  name: Routing clean up
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: clean up
+      copy: 
+        src: /home/cumulus/ON-02/leaf03-frr-00
+        dest: /etc/frr/frr.conf
+      notify:
+        - frr_reload
+ 
+  handlers:
+    - name: frr_reload
+      service:
+        name=frr
+        state=reloaded
+      listen: "frr_reload"       
  
 # #################################################################  
  
