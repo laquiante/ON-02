@@ -21,8 +21,7 @@
   tasks:
     - name: IPv4
       copy: 
-#        src: /home/cumulus/ON-02/server02-00
-        src: /home/cumulus/ON-02/server02-00-C
+        src: /home/cumulus/ON-02/server02-00
         dest: /etc/network/interfaces
     # aktivieren
     - name: activate changes on Server02
