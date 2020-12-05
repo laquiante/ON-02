@@ -26,5 +26,19 @@ pip install redis
       args:
         chdir: /home/cumulus
         
-        
+  - hosts: leaf01
+  name: setup ngrok
+  become: yes
+  tasks:
+
+    - name: ngrok
+      shell: curl -O https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+
+    - name: entpacken vorbereiten
+      apt:
+        name: unzip
+        state: present
+
+    - name: auspacken
+      shell: unzip -o /home/cumulus/ngrok-stable-linux-amd64.zip      
         
