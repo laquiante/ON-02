@@ -1,13 +1,13 @@
-sudo apt update
-sudo apt install redis-server
-sudo nano /etc/redis/redis.conf !systemd
-sudo apt install python-pip
-pip install redis
+# sudo apt update
+# sudo apt install redis-server
+# sudo nano /etc/redis/redis.conf !systemd
+# sudo apt install python-pip
+# pip install redis
 
-https://github.com/CumulusNetworks/python-nlmanager
+#  https://github.com/CumulusNetworks/python-nlmanager
 
-- hosts: leaf01
-  name: setup git, pip und netlink
+- hosts: server01
+  name: setup git, pip, netlink, ngrok
   become: yes
   tasks:
 
@@ -21,17 +21,12 @@ https://github.com/CumulusNetworks/python-nlmanager
         name: python-pip
         state: present
         
-        ! hm, python 2 oder besser 3?
+# nl 2 oder 3?
         
     - name: Installieren netlink
       command: "pip install nlmanager"
       args:
         chdir: /home/cumulus
-        
-  - hosts: leaf01
-  name: setup ngrok
-  become: yes
-  tasks:
 
     - name: ngrok
       shell: curl -O https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
