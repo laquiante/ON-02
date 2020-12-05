@@ -1,8 +1,0 @@
-Step1-3: XXXXX
-sudo apt update
-sudo apt install redis-server
-sudo nano /etc/redis/redis.conf ! systemd
-Step4:
-redis
-sudo apt install python-pip  
-pip install redis
