@@ -1,0 +1,30 @@
+sudo apt update
+sudo apt install redis-server
+sudo nano /etc/redis/redis.conf !systemd
+sudo apt install python-pip
+pip install redis
+
+- hosts: leaf01
+  name: setup git, pip und netlink
+  become: yes
+  tasks:
+
+    - name: Installieren git
+      apt:
+        name: git
+        state: present
+
+    - name: Installieren pip
+      apt:
+        name: python-pip
+        state: present
+        
+        ! hm, python 2 oder besser 3?
+        
+    - name: Installieren netlink
+      command: "pip install nlmanager"
+      args:
+        chdir: /home/cumulus
+        
+        
+        
