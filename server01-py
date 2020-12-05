@@ -1,0 +1,6 @@
+Step1-3: XXXXX
+
+Step4:
+redis
+sudo apt install python-pip  
+pip install redis
