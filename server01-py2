@@ -4,6 +4,8 @@ sudo nano /etc/redis/redis.conf !systemd
 sudo apt install python-pip
 pip install redis
 
+https://github.com/CumulusNetworks/python-nlmanager
+
 - hosts: leaf01
   name: setup git, pip und netlink
   become: yes
