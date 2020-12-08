@@ -7,7 +7,7 @@
 #  https://github.com/CumulusNetworks/python-nlmanager
 
 - hosts: server01
-  name: setup git, pip, netlink, ngrok
+  name: setup git, pip, netlink, ngrok, redis
   become: yes
   tasks:
 
@@ -35,6 +35,12 @@
         state: present
 
     - name: Auspacken
-      shell: unzip -o /home/cumulus/ngrok-stable-linux-amd64.zip      
+      shell: unzip -o /home/cumulus/ngrok-stable-linux-amd64.zip  
+      
+    - name: Installieren redis
+      apt:
+        name: redis
+        state: present
+
         
         
