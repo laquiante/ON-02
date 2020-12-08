@@ -21,14 +21,12 @@
         name: python-pip
         state: present
         
-# nl 2 oder 3?
-        
     - name: Installieren netlink
       command: "pip install nlmanager"
       args:
         chdir: /home/cumulus
 
-    - name: ngrok
+    - name: Installieren ngrok
       shell: curl -O https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
 
     - name: entpacken vorbereiten
@@ -36,6 +34,7 @@
         name: unzip
         state: present
 
-    - name: auspacken
+    - name: Auspacken
       shell: unzip -o /home/cumulus/ngrok-stable-linux-amd64.zip      
+        
         
