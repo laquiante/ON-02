@@ -35,6 +35,7 @@ iface peerlink
     
 auto peerlink.4094
 iface peerlink.4094
+    clagd-args --initDelay 20
     clagd-backup-ip 10.0.0.13
     clagd-peer-ip linklocal
     clagd-priority 1000
