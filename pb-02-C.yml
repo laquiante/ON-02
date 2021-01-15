@@ -31,7 +31,7 @@
     # warten
     - name: wait after ifreload
       pause:
-        seconds: 20
+        seconds: 5
       
     # Workaorund
     - name: bonding 1
@@ -39,14 +39,14 @@
       
     - name: wait after ifdown
       pause:
-        seconds: 10
+        seconds: 3
       
     - name: bonding 2
       shell: /sbin/ifup uplink
       
     - name: wait after ifup
       pause: 
-        seconds: 10
+        seconds: 3
       
 # #################################################################
 # #################################################################
