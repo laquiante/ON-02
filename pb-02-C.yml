@@ -28,6 +28,26 @@
     - name: activate changes for Server02
       shell: /sbin/ifreload -a
       
+    # warten
+    - name: wait after ifreload
+      pause:
+        seconds: 20
+      
+    # Workaorund
+    - name: bonding 1
+      shell: /sbin/ifdown uplink
+      
+    - name: wait after ifdown
+      pause:
+        seconds: 10
+      
+    - name: bonding 2
+      shell: /sbin/ifup uplink
+      
+    - name: wait after ifup
+      pause: 
+        seconds: 10
+      
 # #################################################################
 # #################################################################
 # #################################################################
